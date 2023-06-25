@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1093450131202",
+    "project_id": "smartden-81c05",
+    "storage_bucket": "smartden-81c05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093450131202:android:49e0fb442f23cf02a2041b",
+        "android_client_info": {
+          "package_name": "com.sha.smartden"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1093450131202-jhbeq0di91jsl5utm6065od9cjbu5d8c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZVj9_xBvDdlBCA2vIdT7sJY2wfhahm90"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1093450131202-jhbeq0di91jsl5utm6065od9cjbu5d8c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
