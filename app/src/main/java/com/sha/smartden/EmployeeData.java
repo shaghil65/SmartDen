@@ -1,26 +1,26 @@
 package com.sha.smartden;
 
 public class EmployeeData {
-    int id;
+
+    int Minerid;
     String username;
     String email;
     String img;
-
     public EmployeeData(){}
-
-    public EmployeeData(int id, String username, String email,String img) {
-        this.id = id;
+    public EmployeeData(int minerid, String username, String email,String img) {
+        this.Minerid = minerid;
         this.username = username;
         this.email = email;
         this.img = img;
     }
 
-    public int getId() {
-        return id;
+
+    public int getMinerid() {
+        return Minerid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setMinerid(int minerid) {
+        Minerid = minerid;
     }
 
     public String getUsername() {

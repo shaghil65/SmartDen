@@ -50,7 +50,7 @@ public class AllEmployees extends AppCompatActivity implements EmployeeClickList
     }
 
     private void EventChangeListener() {
-        fstore.collection("Miners").orderBy("id", Query.Direction.ASCENDING).addSnapshotListener(
+        fstore.collection("Miners").orderBy("Minerid", Query.Direction.ASCENDING).addSnapshotListener(
                 (value, error) -> {
                     if(error != null){
                         Log.e("FStore Error",error.getMessage());
@@ -69,12 +69,12 @@ public class AllEmployees extends AppCompatActivity implements EmployeeClickList
 
     @Override
     public void onItemClicked(EmployeeData employeeData) {
-        Toast.makeText(this, String.valueOf(employeeData.getId()), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, String.valueOf(employeeData.getMinerid()), Toast.LENGTH_SHORT).show();
         Intent home = new Intent(AllEmployees.this, AdminEmployeeDetail.class);
         SharedPreferences sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString("miner_username_for_admin", employeeData.getUsername());
-        editor.putString("miner_id_for_admin", String.valueOf(employeeData.getId()));
+        editor.putString("miner_id_for_admin", String.valueOf(employeeData.getMinerid()));
         editor.apply();
         startActivity(home);
     }

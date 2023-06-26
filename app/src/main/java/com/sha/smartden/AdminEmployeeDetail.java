@@ -18,7 +18,7 @@ public class AdminEmployeeDetail extends AppCompatActivity {
     private CardView mc4,mc2,mc3,mc1;
     SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs" ;
-    String miner_username_for_admin, miner_id_for_admin;
+    String miner_username_for_admin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

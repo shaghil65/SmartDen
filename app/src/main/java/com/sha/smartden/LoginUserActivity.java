@@ -86,7 +86,7 @@ public class LoginUserActivity extends AppCompatActivity {
                                         String a = doc.getString("email");
                                         String b = doc.getString("password");
                                         String miner_username = doc.getString("username");
-                                        int c = Math.toIntExact(doc.getLong("id"));
+                                        int c = Math.toIntExact(doc.getLong("Minerid"));
                                         String a1 = email.getText().toString().trim();
                                         String b1 = getMd5(password.getText().toString().trim());
                                         if (a.equals(a1) & b.equals(b1)) {

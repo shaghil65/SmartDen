@@ -58,7 +58,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
     public void onBindViewHolder(@NonNull EmployeeAdapter.EmployeeViewHolder holder, @SuppressLint("RecyclerView") int position) {
         EmployeeData emp = employeeArrayList.get(position);
 
-        holder.e_id.setText(String.valueOf(emp.id));
+        holder.e_id.setText(String.valueOf(emp.Minerid));
         holder.e_username.setText(emp.username);
         holder.e_email.setText(emp.email);
 
@@ -97,8 +97,8 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
                                     employeeArrayList.remove(position);
                                     notifyItemRemoved(position);
                                     notifyDataSetChanged();
-                                    FirebaseDatabase.getInstance().getReference(String.valueOf(emp.id)).removeValue();
-                                    StorageReference ref = storageReference.child(String.valueOf(emp.getId()));
+                                    FirebaseDatabase.getInstance().getReference(String.valueOf(emp.Minerid)).removeValue();
+                                    StorageReference ref = storageReference.child(String.valueOf(emp.getMinerid()));
                                     ref.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {

@@ -152,7 +152,7 @@ public class MinerPersonalInformation extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                miner_id.setText(document.getLong("id").toString());
+                                miner_id.setText(document.getLong("Minerid").toString());
                                 username.setText(document.getString("username"));
                                 email.setText(document.getString("email"));
                                 phone.setText(document.getString("phone"));

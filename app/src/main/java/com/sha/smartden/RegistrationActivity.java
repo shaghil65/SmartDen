@@ -70,7 +70,7 @@ public class RegistrationActivity extends AppCompatActivity {
             String _phone = phone.getText().toString().trim();
             String _city = city.getText().toString().trim();
             String _address = address.getText().toString().trim();
-
+            String walletaddress = "";
             CollectionReference usersRef = fstore.collection("Miners");
             Query query = usersRef.whereEqualTo("username", _username);
             Query query2 = usersRef.whereEqualTo("email",_email);
@@ -114,7 +114,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
                         Map<String, Object> userInfo = new HashMap<>();
-                        userInfo.put("id", b);
+                        userInfo.put("Minerid", b);
                         userInfo.put("username", _username);
                         userInfo.put("email", _email);
                         userInfo.put("password", getMd5(_password));
@@ -122,6 +122,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         userInfo.put("city", _city);
                         userInfo.put("address", _address);
                         userInfo.put("img", "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
+                        userInfo.put("walletaddress", walletaddress);
 
                     fstore.collection("Miners")
                             .document(String.valueOf(b))
@@ -142,11 +143,11 @@ public class RegistrationActivity extends AppCompatActivity {
     private int createMinerUniqueId() {
 
         CollectionReference usersRef = fstore.collection("Miners");
-        Query query = usersRef.whereEqualTo("id", i);
+        Query query = usersRef.whereEqualTo("Minerid", i);
         query.get().addOnCompleteListener(task -> {
             if(task.isSuccessful()){
                 for(DocumentSnapshot documentSnapshot : task.getResult()){
-                    int id = Math.toIntExact(documentSnapshot.getLong("id"));
+                    int id = Math.toIntExact(documentSnapshot.getLong("Minerid"));
 
                     if(id == i){
                         Log.d("TAG", "id Exists" + i);
