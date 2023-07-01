@@ -30,7 +30,7 @@ public class LoggedInAsAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logged_in_as_admin);
 
-//        ActivityCompat.requestPermissions(LoggedInAsAdmin.this, new String[]{Manifest.permission.SEND_SMS}, PackageManager.PERMISSION_GRANTED);
+        ActivityCompat.requestPermissions(LoggedInAsAdmin.this, new String[]{Manifest.permission.SEND_SMS}, PackageManager.PERMISSION_GRANTED);
 
         fauth = FirebaseAuth.getInstance();
 

@@ -102,14 +102,14 @@ public class MinerDetails extends AppCompatActivity {
                     _accident.setText("Accident Detected");
                     count +=1;
                     notification(acc,emess,count);
-//                    SmsManager sms=SmsManager.getDefault();
-//                    sms.sendTextMessage("03241456711", null, "***SmartDen***\nMiner Accident Detected!!\nMiner Id : " + miner_id, null,null);
+                    SmsManager sms=SmsManager.getDefault();
+                    sms.sendTextMessage("03241456711", "03486576541", "***SmartDen***\nMiner Accident Detected!!\nMiner Id : " + miner_id, null,null);
                 }
                 if(emess.equals("1")){
                     count +=1;
                     notification(acc,emess,count);
-//                    SmsManager sms=SmsManager.getDefault();
-//                    sms.sendTextMessage("03241456711", null, "***SmartDen***\nEmergency help call!!\n Miner Id : " + miner_id, null,null);
+                    SmsManager sms=SmsManager.getDefault();
+                    sms.sendTextMessage("03241456711", "03486576541", "***SmartDen***\nMiner Accident Detected!!\nMiner Id : " + miner_id, null,null);
                 }
 
                 if(temp.equals("1")){

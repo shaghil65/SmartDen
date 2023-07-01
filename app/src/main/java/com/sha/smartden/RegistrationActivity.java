@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -21,7 +24,9 @@ import java.util.Map;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText username, email, password, phone,city,address;
+
+    private EditText username, email, password, phone,city,address, walletAddress;
+    TextView txtCharCount;
     private Button regbutton, cancelbutton;
     boolean valid;
     int i = 1;
@@ -47,8 +52,31 @@ public class RegistrationActivity extends AppCompatActivity {
         phone = findViewById(R.id.edtTxtPhone);
         city = findViewById(R.id.edtTxtCity);
         address = findViewById(R.id.edtTxtAddress);
+        walletAddress = findViewById(R.id.edtTxtWalletAddress);
+        txtCharCount = findViewById(R.id.txtCharCount);
         regbutton = (Button) findViewById(R.id.btnRegister);
         cancelbutton = (Button) findViewById(R.id.btnCancel);
+
+
+        walletAddress.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Not needed for this implementation
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Calculate the current character count
+                int currentCharCount = s.length();
+                // Update the TextView to display the current count
+                txtCharCount.setText(currentCharCount + "/42");
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Not needed for this implementation
+            }
+        });
 
 
 
@@ -62,6 +90,7 @@ public class RegistrationActivity extends AppCompatActivity {
             validatePhoneNo();
             validateCity();
             validateAddress();
+            validateWalletAddress();
 
 
             String _username = username.getText().toString().trim();
@@ -70,7 +99,7 @@ public class RegistrationActivity extends AppCompatActivity {
             String _phone = phone.getText().toString().trim();
             String _city = city.getText().toString().trim();
             String _address = address.getText().toString().trim();
-            String walletaddress = "";
+            String _walletaddress = walletAddress.getText().toString().trim();
             CollectionReference usersRef = fstore.collection("Miners");
             Query query = usersRef.whereEqualTo("username", _username);
             Query query2 = usersRef.whereEqualTo("email",_email);
@@ -94,7 +123,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     }
                 }
                 if(task.getResult().size() == 0 && tas.getResult().size() == 0 ){
-                    if (validateUsername() && validateEmail() && validatePassword() && validatePhoneNo() && validateCity()&&validateAddress()) {
+                    if (validateWalletAddress() && validateUsername() && validateEmail() && validatePassword() && validatePhoneNo() && validateCity()&&validateAddress()) {
 
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         DatabaseReference myRef = database.getReference(String.valueOf(b));
@@ -122,7 +151,8 @@ public class RegistrationActivity extends AppCompatActivity {
                         userInfo.put("city", _city);
                         userInfo.put("address", _address);
                         userInfo.put("img", "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
-                        userInfo.put("walletaddress", walletaddress);
+                        userInfo.put("walletaddress", _walletaddress);
+                        userInfo.put("isinsured", "False");
 
                     fstore.collection("Miners")
                             .document(String.valueOf(b))
@@ -263,6 +293,27 @@ public class RegistrationActivity extends AppCompatActivity {
             valid = false;
         } else {
             address.setError(null);
+            valid = true;
+        }
+        return valid;
+    }
+
+    private Boolean validateWalletAddress() {
+        String val = walletAddress.getText().toString().trim();
+        String walletAddressVal = "^0x[a-fA-F0-9]{40}$";
+        if(val.length() != 42){
+            walletAddress.setError("Enter only 42 char");
+            valid = false;
+        }
+        else if (!val.matches(walletAddressVal)) {
+            walletAddress.setError("Char must be btw 0x(Aa0 to Ff0)");
+            valid = false;
+        }
+        else if (val.isEmpty()) {
+            walletAddress.setError("Field cannot be empty");
+            valid = false;
+        } else {
+            walletAddress.setError(null);
             valid = true;
         }
         return valid;

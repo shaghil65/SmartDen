@@ -9,9 +9,9 @@
     tools:context=".RegistrationActivity">
 
     <ImageView
-        android:layout_width="190dp"
-        android:layout_marginTop="10sp"
-        android:layout_height="160dp"
+        android:layout_width="170dp"
+        android:layout_marginTop="4sp"
+        android:layout_height="140dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/male"
         android:id="@+id/male_avatar"/>
@@ -24,7 +24,7 @@
         android:maxLines="1"
         android:inputType="text"
         android:layout_below="@id/male_avatar"
-        android:layout_marginTop="10sp"
+        android:layout_marginTop="8sp"
         android:layout_centerInParent="true"
         android:background="#30ffffff"
         android:hint="Username"
@@ -42,7 +42,7 @@
         android:textColor="@color/white"
         android:ems="16"
         android:layout_below="@id/edtTxtUsername"
-        android:layout_marginTop="10sp"
+        android:layout_marginTop="8sp"
         android:maxLines="1"
         android:inputType="textEmailAddress"
         android:layout_centerInParent="true"
@@ -56,7 +56,7 @@
         />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginTop="10sp"
+        android:layout_marginTop="8sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edtTxtEmail"
@@ -76,7 +76,7 @@
             android:textColor="@color/white"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="10sp"
+            android:layout_marginTop="8sp"
             android:background="#30ffffff"
             android:textColorHint="@color/white"
             android:drawableStart="@drawable/ic_baseline_info_24"
@@ -95,7 +95,7 @@
         android:maxLines="1"
         android:inputType="phone"
         android:layout_below="@id/txtInputLayout"
-        android:layout_marginTop="10sp"
+        android:layout_marginTop="8sp"
         android:layout_centerInParent="true"
         android:background="#30ffffff"
         android:hint="Phone"
@@ -113,7 +113,7 @@
         android:maxLines="1"
         android:inputType="text"
         android:layout_below="@id/edtTxtPhone"
-        android:layout_marginTop="10sp"
+        android:layout_marginTop="8sp"
         android:layout_centerInParent="true"
         android:background="#30ffffff"
         android:hint="City"
@@ -131,7 +131,7 @@
         android:inputType="text"
         android:maxLines="1"
         android:layout_below="@id/edtTxtCity"
-        android:layout_marginTop="10sp"
+        android:layout_marginTop="8sp"
         android:layout_centerInParent="true"
         android:background="#30ffffff"
         android:hint="Address"
@@ -144,16 +144,68 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtTxtAddress"
+        android:background="#30ffffff"
+        android:layout_marginTop="8sp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:ems="16"
+            android:background="#30ffffff"
+            android:inputType="text"
+            android:maxLines="1"
+            android:layout_weight="1"
+            android:layout_centerInParent="true"
+            android:hint="Wallet Address"
+            android:textColorHint="@color/white"
+            android:padding="12sp"
+            android:id="@+id/edtTxtWalletAddress"
+            android:drawableStart="@drawable/walletaddress"
+            android:drawablePadding="10sp" />
+
+        <TextView
+            android:id="@+id/txtCharCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0/42"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+    <!--    <androidx.appcompat.widget.AppCompatEditText-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:ems="16"-->
+<!--        android:inputType="text"-->
+<!--        android:maxLines="1"-->
+<!--        android:layout_below="@id/edtTxtAddress"-->
+<!--        android:layout_marginTop="8sp"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:background="#30ffffff"-->
+<!--        android:hint="Address"-->
+<!--        android:textColorHint="@color/white"-->
+<!--        android:padding="12sp"-->
+<!--        android:id="@+id/edtTxtWalletAddress"-->
+<!--        android:drawableStart="@drawable/ic_baseline_home_24"-->
+<!--        android:drawablePadding="10sp"-->
+<!--        />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center|bottom"
-        android:layout_marginBottom="30dp">
+        android:gravity="center|bottom">
 
         <Button
             android:id="@+id/btnCancel"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:background="@drawable/button"
             android:text="Cancel"
             android:layout_marginEnd="2dp"
