@@ -91,7 +91,6 @@ public class MinerPersonalInformation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 chooseImage();
-                uploadImage();
             }
         });
         btnUpload.setOnClickListener(new View.OnClickListener() {
